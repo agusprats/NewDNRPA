@@ -2,8 +2,8 @@ package adaitw.java;
 
 public class Camion extends Vehiculo implements IVehiculo{
 
-    public Camion(Propietario propietario, String marca) {
-        super(propietario, marca);
+    public Camion(Propietario propietario, String marca, boolean categoriaProfesional) {
+        super(propietario, marca, categoriaProfesional);
     }
 
 
@@ -19,7 +19,7 @@ public class Camion extends Vehiculo implements IVehiculo{
 
     @Override
     public String verFicha() {
-        return "Propietario: "+propietario+" Marca: "+marca;
+        return "Propietario: "+propietario+" Marca: "+marca+ getCategoriaProfesional();
     }
 
     @Override

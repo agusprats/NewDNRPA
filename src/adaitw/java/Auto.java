@@ -3,8 +3,8 @@ package adaitw.java;
 public class Auto extends Vehiculo implements IVehiculo{
     private boolean esElectrico;
 
-    public Auto(Propietario propietario, String marca, boolean esElectrico) {
-        super(propietario, marca);
+    public Auto(Propietario propietario, String marca, boolean esElectrico, boolean categoriaProfesional) {
+        super(propietario, marca, categoriaProfesional);
         this.esElectrico = esElectrico;
     }
 
@@ -24,7 +24,7 @@ public class Auto extends Vehiculo implements IVehiculo{
     public String verFicha() {
         String motor = (esElectrico)?" (Eléctrico)":"(Combustión)";
 
-        return "Propietario: "+propietario+"Motor: "+motor+" Marca: "+marca;
+        return "Propietario: "+propietario+"Motor: "+motor+" Marca: "+marca+ getCategoriaProfesional();
     }
 
     @Override
@@ -38,6 +38,7 @@ public class Auto extends Vehiculo implements IVehiculo{
         return "Auto{" +
                 " Propietario=" + propietario +
                 " Marca=" + marca +
+                "Categoria"+ categoriaProfesional+
                 // ", dominio=" + dominio +
                 '}';
     }

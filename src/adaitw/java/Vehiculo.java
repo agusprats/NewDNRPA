@@ -1,6 +1,7 @@
 package adaitw.java;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 
 
@@ -17,7 +18,7 @@ public class Vehiculo{
     public Vehiculo() {
     }
 
-    public Vehiculo(Propietario propietario, String marca) {
+    public Vehiculo(Propietario propietario, String marca, boolean categoriaProfesional) {
         this.propietario = propietario;
         this.autorizados = autorizados;
         this.categoriaProfesional = categoriaProfesional;
@@ -53,8 +54,9 @@ public class Vehiculo{
         this.marca = marca;
     }
 
-    public boolean isCategoriaProfesional() {
-        return categoriaProfesional;
+    public String getCategoriaProfesional() {
+        String categoria = (categoriaProfesional) ? " Categoría Profesional":" Categoría Particular";
+        return categoria;
     }
 
     public void setCategoriaProfesional(boolean categoriaProfesional) {
@@ -77,13 +79,50 @@ public class Vehiculo{
         this.nuevaFecha = nuevaFecha;
     }
 
-    public Boolean getAntiguedad() {
-        return antiguedad;
+    // Nuevo Propietario
+    public void cambiaPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
+    public String nuevoPropietario() {
+        return "El nuevo Titular del vehiculo es: " + propietario;
+    }
+
+
+    // Fecha de Alta de Nuevo Propietario
+    public void asignarAltaNuevoTitular(LocalDate nuevaFecha) {
+        this.nuevaFecha = nuevaFecha;
+    }
+
+    public String fechaCambioTitular() {
+        return "Nueva Alta: " + nuevaFecha;
     }
 
     public void setAntiguedad(Boolean antiguedad) {
         this.antiguedad = antiguedad;
     }
+    //Antiguedad desde fecha en registro
+    public String antiguedad() {
+        LocalDate start_date = (nuevaFecha==null) ? fechaAlta : nuevaFecha;
+        LocalDate end_date = LocalDate.now();
+        Period diff = Period.between(start_date, end_date);
+
+        if(diff.getYears() >= 1){
+            return "Transcurrió UN AÑO desde ALTA o CAMBIO TITULAR: \n"+diff.getYears()+" Año - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+        }else{
+            return "No tiene un año desde ALTA o CAMBIO TITULAR: \n"+diff.getYears()+" Año/s - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+        }
+    }
+
+    //Autorizados:
+    public void agregarAutorizado(Autorizados autorizados) {
+        this.autorizados.add(autorizados);
+    }
+
+    public List<Autorizados> getAutorizados() {
+        return autorizados;
+    }
+
 
     @Override
     public String toString() {

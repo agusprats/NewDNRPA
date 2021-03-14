@@ -9,6 +9,7 @@ public class Main {
         //TODO prueba:
         dnrpa.agregarVehiculosPrueba();
         dnrpa.listarVehiculos();
+        dnrpa.listarAutos();
 
         //DOS MANERAS DE PREGUNTAR A QUE CLASE PERTENECE LO QUE PREGUNTO
         IVehiculo chevrolet = dnrpa.getVehiculoPorMarca("chevrolet");
@@ -39,8 +40,8 @@ public class Main {
 
 /*La DNRPA (Dirección Nac. Reg. Propiedad del Vehiculo) necesita un sistema para anotar todos
         los vehículos registrados en el país.
-        La DNRPA tiene Registros seccionales.Ok
-        Cada Registro tiene automotores registrados.Ok
+        La DNRPA tiene Registros seccionales.
+        Cada Registro tiene automotores registrados.
         Los automotores pueden ser de uso particular o profesional. *** Ok ***
         Se registran motos eléctricas, autos eléctricos, motocicletas y automóviles a combustión, colectivos, utilitarios y camiones. *** Ok ***
         Todos los vehículos tienen un único propietario y uno o varios autorizados a conducir. *** Ok ***

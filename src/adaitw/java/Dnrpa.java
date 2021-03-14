@@ -6,8 +6,21 @@ import java.util.Queue;
 
 public class Dnrpa {
     List<Seccional> seccionales = new LinkedList<>();
+    List<Auto> autos = new LinkedList<>();
     List <IVehiculo> vehiculos = new LinkedList<>();
     Queue<String> turno = new LinkedList<>();
+
+    public List<Seccional> getSeccionales() {
+        return seccionales;
+    }
+
+    public void agregarSeccional(Seccional seccional){
+        seccionales.add(seccional);
+    }
+
+    public void asignarSeccional(List<Seccional> seccionales) {
+        this.seccionales = seccionales;
+    }
 
     public Dnrpa(List<IVehiculo>vehiculos){
         this.vehiculos = vehiculos;
@@ -28,6 +41,8 @@ public class Dnrpa {
         }
     }
 
+
+
     public IVehiculo getVehiculoPorMarca(String marca){
         for(IVehiculo vehiculo: vehiculos){
             if(vehiculo.getMarca().equals(marca)){
@@ -37,12 +52,32 @@ public class Dnrpa {
         return null;
     }
 
+    public List<Auto> getAutos() {
+        return autos;
+    }
+
+    public void setAutos(List<Auto> autos) {
+        this.autos = autos;
+    }
+
+    public void listarAutos(){
+    for(IVehiculo vehiculo: autos){
+        System.out.println(autos);
+            }
+    }
+
     //TODO borrar: Prueba
     public void agregarVehiculosPrueba(){
 
-        agregarVehiculo(new Auto(new Propietario("Jorge"),"peugeot",  true)) ;
-        agregarVehiculo(new Auto(new Propietario("Leo"),"chevrolet", false ));
-        agregarVehiculo(new Camion(new Propietario("Luis"), "Ford" ));
+        agregarSeccional(new Seccional(1));
+        agregarSeccional(new Seccional(2));
+        agregarSeccional(new Seccional(3));
+
+
+        agregarVehiculo(new Auto(new Propietario("Jorge"),"peugeot",  true, true));
+
+        agregarVehiculo(new Auto(new Propietario("Leo"),"chevrolet", false, false ));
+        agregarVehiculo(new Camion(new Propietario("Luis"), "Ford", false ));
     }
 
 
