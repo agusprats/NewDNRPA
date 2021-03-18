@@ -5,7 +5,7 @@ import java.time.Period;
 import java.util.*;
 
 
-public class Vehiculo{
+public class Vehiculo extends Seccional{
     protected Propietario propietario;
     protected String marca;
     protected List<Autorizados> autorizados = new ArrayList<>();
@@ -32,18 +32,15 @@ public class Vehiculo{
     public Vehiculo(Propietario propietario, boolean categoriaProfesional) {
     }
 
-
-    public int getDominio() {
-        return dominio;
-    }
-
-
     public Propietario getPropietario() {
         return propietario;
     }
 
     public void setPropietario(Propietario propietario) {
         this.propietario = propietario;
+    }
+    public int getDominio() {
+        return dominio;
     }
 
     public String getMarca() {
@@ -55,8 +52,12 @@ public class Vehiculo{
     }
 
     public String getCategoriaProfesional() {
-        String categoria = (categoriaProfesional) ? " Categoría Profesional":" Categoría Particular";
-        return categoria;
+        if(categoriaProfesional){
+            return "PROFESIONAL";
+        }else{
+            return "PARTICULAR";
+        }
+
     }
 
     public void setCategoriaProfesional(boolean categoriaProfesional) {
@@ -137,4 +138,10 @@ public class Vehiculo{
                 // ", antiguedad=" + antiguedad +
                 '}';
     }
+
+    public void setMotor(Motor motor) {
+    }
 }
+
+/*String categoria = (categoriaProfesional) ? " Categoría Profesional":" Categoría Particular";
+        return categoria;*/

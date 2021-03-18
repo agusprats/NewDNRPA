@@ -6,6 +6,9 @@ public class Camion extends Vehiculo implements IVehiculo{
         super(propietario, marca, categoriaProfesional);
     }
 
+    public Camion() {
+
+    }
 
 
     @Override
@@ -26,6 +29,8 @@ public class Camion extends Vehiculo implements IVehiculo{
     public String getMarca() {
         return marca;
     }
+
+
 
 
 }

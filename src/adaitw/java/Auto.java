@@ -1,30 +1,31 @@
 package adaitw.java;
 
-public class Auto extends Vehiculo implements IVehiculo{
-    private boolean esElectrico;
+import java.util.Scanner;
 
-    public Auto(Propietario propietario, String marca, boolean esElectrico, boolean categoriaProfesional) {
+public class Auto extends Vehiculo implements IVehiculo{
+    private Motor motor;
+
+    public Auto(Propietario propietario, String marca, boolean categoriaProfesional) {
         super(propietario, marca, categoriaProfesional);
-        this.esElectrico = esElectrico;
+        this.motor = motor;
     }
 
     public Auto(){
 
     }
 
-    public boolean isEsElectrico() {
-        return esElectrico;
+    public Motor getMotor() {
+        return motor;
     }
 
-    public void setEsElectrico(boolean esElectrico) {
-        this.esElectrico = esElectrico;
+    public void setMotor(Motor motor) {
+        this.motor = motor;
     }
+
 
     @Override
     public String verFicha() {
-        String motor = (esElectrico)?" (Eléctrico)":"(Combustión)";
-
-        return "Propietario: "+propietario+"Motor: "+motor+" Marca: "+marca+ getCategoriaProfesional();
+        return " Motor{"+ motor.getSigno()+'}';
     }
 
     @Override
@@ -33,13 +34,19 @@ public class Auto extends Vehiculo implements IVehiculo{
     }
 
 
+
+
     @Override
     public String toString() {
         return "Auto{" +
-                " Propietario=" + propietario +
-                " Marca=" + marca +
-                "Categoria"+ categoriaProfesional+
+                " Propietario: =" + getPropietario() +
+                " MARCA: " + marca +
+                " CATEGORIA: "+ getCategoriaProfesional()+
+                " MOTOR: "+ motor.getSigno()+
                 // ", dominio=" + dominio +
                 '}';
     }
 }
+/* String motor = (esElectrico)?" (Eléctrico)":"(Combustión)";
+
+        return "Propietario: "+propietario+"Motor: "+motor+" Marca: "+marca+ getCategoriaProfesional();*/
