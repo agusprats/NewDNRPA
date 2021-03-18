@@ -83,12 +83,12 @@ public class Seccional extends Dnrpa{
         String direccion = scanner.next();
         propietario.setDireccion(direccion);
         nuevoAuto.setPropietario(propietario);
-        nuevoAuto.setCategoriaProfesional(Boolean.parseBoolean(Consola.validarCategoriaProfesional("ES CATEGORIA PROFESIONAL (true/false)")));
+        nuevoAuto.setCategoriaProfesional(Boolean.parseBoolean(Consola.validarCatPro("CATEGORIA PROFESIONAL (true/false)")));
         System.out.println("electrico / combustion ");
         String entry = scanner.next();
         Motor motor = Enum.valueOf(Motor.class, entry);
         nuevoAuto.setMotor(motor);
-        nuevoAuto.setFechaAlta(LocalDate.parse(Consola.validarFechaAlta("FECHA ALTA REGISTRO: (YYYY-MM-DD):")));
+        nuevoAuto.setFechaAlta(LocalDate.parse(Consola.validarFechaAlta("FECHA ALTA: (YYYY-MM-DD):")));
         autos.add(nuevoAuto);
     }
     public void agregarCamion(){
@@ -108,7 +108,7 @@ public class Seccional extends Dnrpa{
         String direccion = scanner.next();
         propietario.setDireccion(direccion);
         nuevoCamion.setPropietario(propietario);
-        nuevoCamion.setCategoriaProfesional(Boolean.parseBoolean(Consola.validarCategoriaProfesional("ES CATEGORIA PROFESIONAL (true/false)")));
+        nuevoCamion.setCategoriaProfesional(Boolean.parseBoolean(Consola.validarCatPro("CATEGORIA PROFESIONAL (true/false)")));
         nuevoCamion.setFechaAlta(LocalDate.parse(Consola.validarFechaAlta("FECHA ALTA REGISTRO: (YYYY-MM-DD):")));
         camiones.add(nuevoCamion);
     }
@@ -120,7 +120,7 @@ public class Seccional extends Dnrpa{
                 "codigo=" + getCodigo() +
                // ", vehiculos :" + vehiculos +
                 ", autos : " + getAutos() +
-                ", camiones : " + getAutos() +
+                ", camiones : " + getCamiones() +
                 '}';
     }
 }

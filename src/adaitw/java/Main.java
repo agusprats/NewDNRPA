@@ -2,7 +2,6 @@ package adaitw.java;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +14,7 @@ public class Main {
         List <Camion> camiones = new ArrayList<>();
         List<Auto> autos= new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+
 
         while(true) {
             System.out.println("        D.N.R.P.A.         ");
@@ -29,7 +29,6 @@ public class Main {
 
             int option1 = Consola.validateInt("INGRESAR OPCION: ",1,11);
             switch (option1) {
-
                 case 1:
                     dnrpa.agregarSeccional();
                     break;

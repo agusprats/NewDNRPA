@@ -29,7 +29,7 @@ public class Consola {
         scanner = new Scanner(System.in);
     }
 
-    public static String validarCategoriaProfesional(String prompt) {
+    public static String validarCatPro(String prompt) {
         System.out.print(prompt);
 
         String result;

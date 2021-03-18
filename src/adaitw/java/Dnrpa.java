@@ -33,13 +33,14 @@ public class Dnrpa {
     }
 
 
-
     @Override
     public String toString() {
         return "Dnrpa{" +
                 "seccionales=" + seccionales +
                 '}';
     }
+
+
 
 }
 
