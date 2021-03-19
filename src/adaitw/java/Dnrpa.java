@@ -7,11 +7,12 @@ public class Dnrpa {
     Queue<String> turno = new LinkedList<>();
     List<Auto> autos= new ArrayList<>();
 
+
     public Dnrpa(){
         this.seccionales = new ArrayList<>();
     }
 
-    public void setSeccionales(List<Seccional> seccionales) {
+    public void setSeccionales(String codigo) {
         this.seccionales = seccionales;
     }
 
@@ -29,6 +30,11 @@ public class Dnrpa {
     }
 
     public void asignarSeccional(){
+        Scanner scanner = new Scanner(System.in);
+        Seccional s = new Seccional();
+        System.out.println("Cargar Código: ");
+        String codigo = scanner.next();
+        s.setCodigo(codigo);
         this.seccionales = seccionales;
     }
 
@@ -37,6 +43,7 @@ public class Dnrpa {
     public String toString() {
         return "Dnrpa{" +
                 "seccionales=" + seccionales +
+
                 '}';
     }
 

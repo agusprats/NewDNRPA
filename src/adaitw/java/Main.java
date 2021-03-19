@@ -40,9 +40,13 @@ public class Main {
                     break;
                 case 4:
                     System.out.println(seccionales.getAutos());
+
                     break;
                 case 5:
                     System.out.println(seccionales.getCamiones());
+                    break;
+                case 6:
+                    System.out.println(seccionales);
                     break;
                 case 10:
                     System.exit(0);

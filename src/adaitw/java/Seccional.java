@@ -29,6 +29,7 @@ public class Seccional extends Dnrpa{
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
     public List<Auto> getAutos() {
         return autos;
     }
@@ -89,7 +90,10 @@ public class Seccional extends Dnrpa{
         Motor motor = Enum.valueOf(Motor.class, entry);
         nuevoAuto.setMotor(motor);
         nuevoAuto.setFechaAlta(LocalDate.parse(Consola.validarFechaAlta("FECHA ALTA: (YYYY-MM-DD):")));
+        nuevoAuto.asignarSeccional();
         autos.add(nuevoAuto);
+        seccionales.add(nuevoAuto);
+
     }
     public void agregarCamion(){
         Scanner scanner = new Scanner(System.in);
@@ -113,16 +117,17 @@ public class Seccional extends Dnrpa{
         camiones.add(nuevoCamion);
     }
 
-
     @Override
     public String toString() {
         return "Seccional{" +
                 "codigo=" + getCodigo() +
                // ", vehiculos :" + vehiculos +
                 ", autos : " + getAutos() +
+                ", seccionales : " + getSeccionales() +
                 ", camiones : " + getCamiones() +
                 '}';
     }
+
 }
 
 
