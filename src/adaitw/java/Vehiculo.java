@@ -5,12 +5,13 @@ import java.time.Period;
 import java.util.*;
 
 
-public class Vehiculo extends Seccional{
+public class Vehiculo<i> extends Seccional{
+    protected String codigoV;
     protected Propietario propietario;
     protected String marca;
     protected List<Autorizados> autorizados = new ArrayList<>();
     protected boolean categoriaProfesional;
-    protected int dominio;
+    protected int dominio = 0;
     protected LocalDate fechaAlta;
     protected LocalDate nuevaFecha;
     protected boolean antiguedad;
@@ -18,15 +19,16 @@ public class Vehiculo extends Seccional{
     public Vehiculo() {
     }
 
-    public Vehiculo(Propietario propietario, String marca, boolean categoriaProfesional) {
+    public Vehiculo(String codigoV, Propietario propietario, String marca) {
         this.propietario = propietario;
         this.autorizados = autorizados;
         this.categoriaProfesional = categoriaProfesional;
-        this.dominio = dominio;
+       this.dominio = getDominio();
         this.fechaAlta = fechaAlta;
         this.nuevaFecha = nuevaFecha;
         this.antiguedad = antiguedad;
         this.marca = marca;
+        this.codigoV = codigoV;
     }
 
     public Vehiculo(Propietario propietario, boolean categoriaProfesional) {
@@ -39,6 +41,17 @@ public class Vehiculo extends Seccional{
     public void setPropietario(Propietario propietario) {
         this.propietario = propietario;
     }
+
+    public void setDominio() {
+        Random aleatorio = new Random();
+        HashMap<Integer, Vehiculo> MapaVehiculo = new HashMap<>();
+        for(int i=0; i<99; i++){
+            dominio = aleatorio.nextInt(8)+1;
+            MapaVehiculo.put(dominio, new Vehiculo());
+        }
+
+    }
+
     public int getDominio() {
         return dominio;
     }
@@ -49,6 +62,14 @@ public class Vehiculo extends Seccional{
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public String getCodigoV() {
+        return codigoV;
+    }
+
+    public void setCodigoV(String codigoV) {
+        this.codigoV = codigoV;
     }
 
     public String getCategoriaProfesional() {
@@ -81,12 +102,24 @@ public class Vehiculo extends Seccional{
     }
 
     // Nuevo Propietario
-    public void cambiaPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void cambiarPropietario(String codigoV) {
+        Scanner scanner = new Scanner(System.in);
+        Propietario propietario = new Propietario();
+        System.out.println("Nuevo Titular: ");
+        String nombre = scanner.next();
+        propietario.setNombre(nombre);
+        System.out.println("DNI: ");
+        String dni = scanner.next();
+        propietario.setDni(dni);
+        System.out.println("Domicilio: ");
+        String direccion = scanner.next();
+        propietario.setDireccion(direccion);
+        setPropietario(propietario);
+
     }
 
     public String nuevoPropietario() {
-        return "El nuevo Titular del vehiculo es: " + propietario;
+        return "Nuevo Titular: " + propietario;
     }
 
 
@@ -115,13 +148,59 @@ public class Vehiculo extends Seccional{
         }
     }
 
-    //Autorizados:
-    public void agregarAutorizado(Autorizados autorizados) {
+    public void agregarV(){
+        Scanner scanner = new Scanner(System.in);
+        List <Seccional> seccionales = new ArrayList<>();
+        System.out.println("CODIGO S: ");
+        String codigo= scanner.next();
+        setCodigo(codigo);
+        System.out.println("CODIGO V: ");
+        String codigoV= scanner.next();
+        setCodigoV(codigoV);
+        System.out.println("MARCA: ");
+        String marca= scanner.next();
+        setMarca(marca);
+        System.out.println("Propietario: ");
+        Propietario propietario = new Propietario();
+        String nombre = scanner.next();
+        propietario.setNombre(nombre);
+        System.out.println("DNI: ");
+        String dni = scanner.next();
+        propietario.setDni(dni);
+        System.out.println("Domicilio: ");
+        String direccion = scanner.next();
+        propietario.setDireccion(direccion);
+        setPropietario(propietario);
+        setCategoriaProfesional(Boolean.parseBoolean(Consola.validarCategoria("CATEGORIA PROFESIONAL: (true/false) ")));
+        setFechaAlta(LocalDate.parse(Consola.validarFechaAlta("FECHA ALTA: (YYYY-MM-DD):")));
+        setDominio();
+        }
+
+        public void agregarAutorizado(){
+            Scanner scanner = new Scanner(System.in);
+            Autorizados autorizados = new Autorizados();
+            System.out.println("AUTORIZADO: ");
+            String nombre = scanner.next();
+            autorizados.setNombre(nombre);
+            System.out.println("DNI: ");
+            String dni = scanner.next();
+            autorizados.setDni(dni);
+            System.out.println("Domicilio: ");
+            String direccion = scanner.next();
+            autorizados.setDireccion(direccion);
+            this.autorizados.add(autorizados);
+        }
+        //Autorizados:
+        public void agregarAutorizado(Autorizados autorizados) {
         this.autorizados.add(autorizados);
     }
-
-    public List<Autorizados> getAutorizados() {
+        public List<Autorizados> getAutorizados() {
         return autorizados;
+        }
+
+
+    public String verFicha(){
+        return  " MARCA: " + marca ;
     }
 
 
@@ -129,10 +208,10 @@ public class Vehiculo extends Seccional{
     public String toString() {
         return "Vehiculo{" +
                 " Propietario = " + getPropietario() +
-                // ", autorizados=" + autorizados +
-                // ", categoriaProfesional=" + categoriaProfesional+
-                // ", dominio=" + getDominio() +
-                // ", fechaAlta=" + fechaAlta +
+                ", autorizados=" + autorizados +
+                 ", categoriaProfesional=" + categoriaProfesional+
+                 ", dominio=" + getDominio() +
+                 ", fechaAlta=" + fechaAlta +
                 // ", nuevaFecha=" + nuevaFecha +
                 // ", cilindros=" + cilindros +
                 // ", antiguedad=" + antiguedad +
@@ -141,6 +220,7 @@ public class Vehiculo extends Seccional{
 
     public void setMotor(Motor motor) {
     }
+
 }
 
 /*String categoria = (categoriaProfesional) ? " Categoría Profesional":" Categoría Particular";

@@ -3,17 +3,44 @@ package adaitw.java;
 import java.util.*;
 
 public class Dnrpa {
-    List<Seccional> seccionales;
+    List<Seccional> seccionales = new LinkedList<>();
     Queue<String> turno = new LinkedList<>();
-    List<Auto> autos= new ArrayList<>();
 
+
+    public void cargarNuevaSeccional(){
+        String codigo = Consola.getString("Ingresar Código");
+        try {
+            Seccional se = new Seccional(codigo);
+            agregarSeccional(se);
+        }catch(DatosIncorrectosException e){
+            System.out.println("Carga Fallida"+e.getMessage());
+        }
+    }
+    public void agregarSeccional(Seccional se){
+        seccionales.add(se);
+    }
+
+    public void listarSeccionales() {
+        for(Seccional s : seccionales)
+            System.out.println(s);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Dnrpa{" +
+                "seccionales=" + seccionales +
+                '}';
+    }
+
+
+}
+
+
+    /*
 
     public Dnrpa(){
         this.seccionales = new ArrayList<>();
-    }
-
-    public void setSeccionales(String codigo) {
-        this.seccionales = seccionales;
     }
 
     public void agregarSeccional(){
@@ -35,19 +62,6 @@ public class Dnrpa {
         System.out.println("Cargar Código: ");
         String codigo = scanner.next();
         s.setCodigo(codigo);
-        this.seccionales = seccionales;
     }
 
-
-    @Override
-    public String toString() {
-        return "Dnrpa{" +
-                "seccionales=" + seccionales +
-
-                '}';
-    }
-
-
-
-}
-
+*/

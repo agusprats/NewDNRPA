@@ -1,19 +1,19 @@
 package adaitw.java;
 
-public class Camion extends Vehiculo implements IVehiculo{
+public class Utilitario extends Vehiculo implements IVehiculo{
 
-    public Camion(String codigoV ,Propietario propietario, String marca) {
+    public Utilitario(String codigoV, Propietario propietario, String marca) {
         super(codigoV, propietario, marca);
     }
 
-    public Camion() {
+    public Utilitario() {
 
     }
 
 
     @Override
     public String toString() {
-        return "Camion{" +
+        return "UTILITARIOS {" +
                 " SECCIONAL: " + codigo +
                 " CODIGO: " + codigoV +
                 " Propietario: =" + getPropietario() +

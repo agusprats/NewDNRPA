@@ -1,9 +1,14 @@
 package adaitw.java;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Propietario {
     protected String nombre;
     protected String direccion;
     protected String dni;
+
 
     public Propietario() {
         this.nombre = nombre;
@@ -15,7 +20,11 @@ public class Propietario {
     public Propietario(String propietario){
 
     }
-
+    public Propietario(String nombre, String dni, String direccion){
+        this.nombre= nombre;
+        this.dni= dni;
+        this.direccion= direccion;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -40,12 +49,13 @@ public class Propietario {
         this.direccion = direccion;
     }
 
+
     @Override
     public String toString() {
         return "Propietario{" +
                 " Nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", dni='" + dni + '\'' +
+                ", Direccion='" + direccion + '\'' +
+                ", DNI='" + dni + '\'' +
                 '}';
     }
 }

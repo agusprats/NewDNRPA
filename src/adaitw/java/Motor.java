@@ -1,7 +1,7 @@
 package adaitw.java;
 
 public enum Motor {
-    electrico("(E)"), combustion("(C)");
+    e("(E)"), c("(C)");
 
     private Motor(String signo) {
         this.signo=signo;

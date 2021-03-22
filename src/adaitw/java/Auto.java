@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Auto extends Vehiculo implements IVehiculo{
     private Motor motor;
 
-    public Auto(Propietario propietario, String marca, boolean categoriaProfesional) {
-        super(propietario, marca, categoriaProfesional);
+    public Auto(String codigoV, Propietario propietario, String marca) {
+        super(codigoV, propietario, marca);
         this.motor = motor;
     }
 
@@ -33,17 +33,28 @@ public class Auto extends Vehiculo implements IVehiculo{
         return marca;
     }
 
-
-
+    @Override
+    public void agregarV() {
+        super.agregarV();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("MOTOR:\n ELECTRICO = e \n COMBUSTION = c ");
+        String entry = scanner.next();
+        Motor motor = Enum.valueOf(Motor.class, entry);
+        setMotor(motor);
+    }
 
     @Override
     public String toString() {
         return "Auto{" +
+                " SECCIONAL: " + codigo +
+                " CODIGO: " + codigoV +
                 " Propietario: =" + getPropietario() +
                 " MARCA: " + marca +
+                " Dominio "+ dominio+
                 " CATEGORIA: "+ getCategoriaProfesional()+
+                " ALTA: "+ getFechaAlta()+
                 " MOTOR: "+ motor.getSigno()+
-                // ", dominio=" + dominio +
+                " AUTORIZADO: "+ getAutorizados()+
                 '}';
     }
 }

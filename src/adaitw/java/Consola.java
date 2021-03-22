@@ -10,6 +10,22 @@ public class Consola {
     private Consola() {
     }
 
+    public static boolean validarString(String texto, int maximo) {
+        return texto.length()<=maximo;
+    }
+
+    public static String getString(String mensaje) {
+        String texto = "";
+        Scanner sc = new Scanner(System.in);
+        boolean correcto = false;
+        do{
+            System.out.print(mensaje+": ");
+            texto = sc.nextLine();
+            if(texto.length()>0) correcto=true;
+        }while(!correcto);
+        return texto;
+    }
+
     public static int validateInt(String prompt, int min, int max) {
         int input;
         do {
@@ -29,7 +45,7 @@ public class Consola {
         scanner = new Scanner(System.in);
     }
 
-    public static String validarCatPro(String prompt) {
+    public static String validarCategoria(String prompt) {
         System.out.print(prompt);
 
         String result;
