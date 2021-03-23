@@ -26,7 +26,10 @@ public class Main {
                     dnrpa.cargar();
                     break;
                 case 2:
+                    if(dnrpa.seccionales.size() != 0)
                     System.out.println(dnrpa.getSeccionales());
+                    else
+                        System.out.println("REGISTRO VACIO !!!\nINICIAR CARGA ===> OPCION Nº 1");
                     break;
                 case 3:
                     System.out.println(dnrpa.seccionales.get(0));

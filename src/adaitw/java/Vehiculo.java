@@ -46,7 +46,7 @@ public class Vehiculo<i> extends Seccional{
         Random aleatorio = new Random();
         HashMap<Integer, Vehiculo> MapaVehiculo = new HashMap<>();
         for(int i=0; i<99; i++){
-            dominio = aleatorio.nextInt(8)+1000;
+            dominio = aleatorio.nextInt(8)*1000;
             MapaVehiculo.put(dominio, new Vehiculo());
         }
 

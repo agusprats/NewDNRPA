@@ -71,6 +71,7 @@ public class Dnrpa {
                         Seccional S5= seccionales.get(4);
                         seccionales.add(S5);
                         break;
+
                     case 10:
                         running = false;
                 }

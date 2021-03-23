@@ -130,9 +130,11 @@ public class Seccional extends Dnrpa {
                     utilitarios.add(utilitario);
                     break;
                 case 6:
-                    getAutos();
-                    Auto a1 = new Auto();
-                    a1.cambiarPropietario("VE1");
+                    if(camiones.size() != 0){
+                        listarCamiones();
+                    }else{
+                        System.out.println("REGISTRO VACIO !!!\nINICIAR CARGA ===> OPCION Nº 2");
+                    }
                     break;
                 case 10:
                     running = false;
