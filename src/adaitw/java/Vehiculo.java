@@ -101,27 +101,11 @@ public class Vehiculo<i> extends Seccional{
         this.nuevaFecha = nuevaFecha;
     }
 
-    // Nuevo Propietario
-    public void cambiarPropietario(String codigoV) {
-        Scanner scanner = new Scanner(System.in);
-        Propietario propietario = new Propietario();
-        System.out.println("Nuevo Titular: ");
-        String nombre = scanner.next();
-        propietario.setNombre(nombre);
-        System.out.println("DNI: ");
-        String dni = scanner.next();
-        propietario.setDni(dni);
-        System.out.println("Domicilio: ");
-        String direccion = scanner.next();
-        propietario.setDireccion(direccion);
-        setPropietario(propietario);
 
-    }
 
     public String nuevoPropietario() {
         return "Nuevo Titular: " + propietario;
     }
-
 
     // Fecha de Alta de Nuevo Propietario
     public void asignarAltaNuevoTitular(LocalDate nuevaFecha) {
@@ -135,8 +119,9 @@ public class Vehiculo<i> extends Seccional{
     public void setAntiguedad(Boolean antiguedad) {
         this.antiguedad = antiguedad;
     }
-    //Antiguedad desde fecha en registro
-    public String antiguedad() {
+
+    // Nuevo Propietario
+    public String cambiarPropietario() {
         LocalDate start_date = (nuevaFecha==null) ? fechaAlta : nuevaFecha;
         LocalDate end_date = LocalDate.now();
         Period diff = Period.between(start_date, end_date);
@@ -153,7 +138,9 @@ public class Vehiculo<i> extends Seccional{
             String direccion = scanner.next();
             propietario.setDireccion(direccion);
             setPropietario(propietario);
+            System.out.println(nuevoPropietario());
             return "SI PUEDE CAMBIAR DE TITULAR: \n"+diff.getYears()+" Año/s - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+
         }
     }
 
