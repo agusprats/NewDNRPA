@@ -49,12 +49,12 @@ public class Auto extends Vehiculo implements IVehiculo{
                 " SECCIONAL: " + codigo +
                 " CODIGO: " + codigoV +
                 " Propietario: =" + getPropietario() +
-                " MARCA: " + marca +
-                " Dominio "+ dominio+
-                " CATEGORIA: "+ getCategoriaProfesional()+
-                " ALTA: "+ getFechaAlta()+
-                " MOTOR: "+ motor.getSigno()+
-                " AUTORIZADO: "+ getAutorizados()+
+                " - MARCA: " + marca +
+                " - Dominio "+ dominio+
+                " - CATEGORIA: "+ getCategoriaProfesional()+
+                " - ALTA: "+ getFechaAlta()+
+                " - MOTOR: "+ motor.getSigno()+
+                " - AUTORIZADO: "+ getAutorizados()+
                 '}';
     }
 }

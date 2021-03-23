@@ -77,6 +77,36 @@ public class Consola {
 
         return result;
     }
+    public static String validarCodSeccional(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^S[0-9\\s]+"); result = scanner.next()) {
+            System.out.print("Formato inválido, Intente nuevamente:  ");
+        }
+
+        return result;
+    }
+    public static String validarCodVehicular(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^VE[0-9\\s]+"); result = scanner.next()) {
+            System.out.print("Formato inválido, Intente nuevamente:  ");
+        }
+
+        return result;
+    }
+    public static String validarDni(String prompt) {
+        System.out.print(prompt);
+
+        String result;
+        for(result = scanner.next(); !result.matches("^AR[0-9]+"); result = scanner.next()) {
+            System.out.print("DATO INVALIDO, Intente nuevamente:  ");
+        }
+
+        return result;
+    }
 
 
 }

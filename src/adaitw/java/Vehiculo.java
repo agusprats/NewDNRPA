@@ -23,7 +23,7 @@ public class Vehiculo<i> extends Seccional{
         this.propietario = propietario;
         this.autorizados = autorizados;
         this.categoriaProfesional = categoriaProfesional;
-       this.dominio = getDominio();
+        this.dominio = getDominio();
         this.fechaAlta = fechaAlta;
         this.nuevaFecha = nuevaFecha;
         this.antiguedad = antiguedad;
@@ -46,7 +46,7 @@ public class Vehiculo<i> extends Seccional{
         Random aleatorio = new Random();
         HashMap<Integer, Vehiculo> MapaVehiculo = new HashMap<>();
         for(int i=0; i<99; i++){
-            dominio = aleatorio.nextInt(8)+1;
+            dominio = aleatorio.nextInt(8)+1000;
             MapaVehiculo.put(dominio, new Vehiculo());
         }
 
@@ -140,23 +140,27 @@ public class Vehiculo<i> extends Seccional{
         LocalDate start_date = (nuevaFecha==null) ? fechaAlta : nuevaFecha;
         LocalDate end_date = LocalDate.now();
         Period diff = Period.between(start_date, end_date);
-
-        if(diff.getYears() >= 1){
-            return "Transcurrió UN AÑO desde ALTA o CAMBIO TITULAR: \n"+diff.getYears()+" Año - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+        if(diff.getYears() < 1){
+            return "NO PUEDE CAMBIAR DE TITULAR: \n"+diff.getYears()+" Año - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
         }else{
-            return "No tiene un año desde ALTA o CAMBIO TITULAR: \n"+diff.getYears()+" Año/s - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
+            Scanner scanner = new Scanner(System.in);
+            Propietario propietario = new Propietario();
+            System.out.println("Nuevo Titular: ");
+            String nombre = scanner.next();
+            propietario.setNombre(nombre);
+            propietario.setDni(Consola.validarDni("INGRESE DNI: AR + NÚMEROS: "));
+            System.out.println("Domicilio: ");
+            String direccion = scanner.next();
+            propietario.setDireccion(direccion);
+            setPropietario(propietario);
+            return "SI PUEDE CAMBIAR DE TITULAR: \n"+diff.getYears()+" Año/s - "+diff.getMonths()+" Mes/es - "+diff.getDays()+" Dia/s ";
         }
     }
 
     public void agregarV(){
         Scanner scanner = new Scanner(System.in);
-        List <Seccional> seccionales = new ArrayList<>();
-        System.out.println("CODIGO S: ");
-        String codigo= scanner.next();
-        setCodigo(codigo);
-        System.out.println("CODIGO V: ");
-        String codigoV= scanner.next();
-        setCodigoV(codigoV);
+        setCodigo(Consola.validarCodSeccional("INGRESAR CODIGO SECCIONAL ( S + número/s sin espacios): "));
+        setCodigoV(Consola.validarCodVehicular("INGRESAR CODIGO VEHICULAR ( VE + número/s sin espacios): "));
         System.out.println("MARCA: ");
         String marca= scanner.next();
         setMarca(marca);
@@ -164,9 +168,7 @@ public class Vehiculo<i> extends Seccional{
         Propietario propietario = new Propietario();
         String nombre = scanner.next();
         propietario.setNombre(nombre);
-        System.out.println("DNI: ");
-        String dni = scanner.next();
-        propietario.setDni(dni);
+        propietario.setDni(Consola.validarDni("INGRESE DNI: AR + NÚMEROS: "));
         System.out.println("Domicilio: ");
         String direccion = scanner.next();
         propietario.setDireccion(direccion);
@@ -176,21 +178,20 @@ public class Vehiculo<i> extends Seccional{
         setDominio();
         }
 
+        //Autorizados:
         public void agregarAutorizado(){
             Scanner scanner = new Scanner(System.in);
             Autorizados autorizados = new Autorizados();
             System.out.println("AUTORIZADO: ");
             String nombre = scanner.next();
             autorizados.setNombre(nombre);
-            System.out.println("DNI: ");
-            String dni = scanner.next();
-            autorizados.setDni(dni);
+            autorizados.setDni(Consola.validarDni("INGRESE DNI: AR + NÚMEROS: "));
             System.out.println("Domicilio: ");
             String direccion = scanner.next();
             autorizados.setDireccion(direccion);
             this.autorizados.add(autorizados);
         }
-        //Autorizados:
+
         public void agregarAutorizado(Autorizados autorizados) {
         this.autorizados.add(autorizados);
     }
